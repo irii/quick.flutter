@@ -4,7 +4,7 @@ import 'dart:typed_data';
 
 import 'package:ffi/ffi.dart' as ffi;
 import 'package:flutter/foundation.dart';
-import 'package:libusb/libusb64.dart';
+import 'package:libusb/libusb.dart';
 import 'package:quick_usb/src/common.dart';
 
 import 'quick_usb_platform_interface.dart';
@@ -203,7 +203,7 @@ class _QuickUsbDesktop extends QuickUsbPlatform {
         id: configDescPtr.ref.bConfigurationValue,
         index: configDescPtr.ref.iConfiguration,
         interfaces: _iterateInterface(
-                configDescPtr.ref.interface_1, configDescPtr.ref.bNumInterfaces)
+                configDescPtr.ref.interface$, configDescPtr.ref.bNumInterfaces)
             .toList(),
       );
       _libusb.libusb_free_config_descriptor(configDescPtr);
@@ -291,9 +291,9 @@ class _QuickUsbDesktop extends QuickUsbPlatform {
       var result = _libusb.libusb_bulk_transfer(
         _devHandle!,
         endpoint.endpointAddress,
-        dataPtr,
+        dataPtr.cast(),
         maxLength,
-        actualLengthPtr,
+        actualLengthPtr.cast(),
         timeout,
       );
 
@@ -321,9 +321,9 @@ class _QuickUsbDesktop extends QuickUsbPlatform {
       var result = _libusb.libusb_bulk_transfer(
         _devHandle!,
         endpoint.endpointAddress,
-        dataPtr,
+        dataPtr.cast(),
         data.length,
-        actualLengthPtr,
+        actualLengthPtr.cast(),
         timemout,
       );
 
