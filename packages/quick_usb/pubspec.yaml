@@ -37,10 +37,6 @@ flutter:
     # then add platforms following the instruction here:
     # https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms
     # -------------------
-      android:
-        package: com.example.quick_usb
-        pluginClass: QuickUsbPlugin
-        dartPluginClass: QuickUsbAndroid
       windows:
         pluginClass: QuickUsbPlugin
         dartPluginClass: QuickUsbWindows
