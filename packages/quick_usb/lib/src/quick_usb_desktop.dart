@@ -345,4 +345,10 @@ class _QuickUsbDesktop extends QuickUsbPlatform {
       _libusb.libusb_set_auto_detach_kernel_driver(_devHandle!, enable ? 1 : 0);
     }
   }
+
+  @override
+  Future<int> getMaxPacketSize(UsbEndpoint endpoint) async {
+    var usb = _libusb.libusb_get_device(_devHandle!);
+    return _libusb.libusb_get_max_packet_size(usb, endpoint.endpointNumber);
+  }
 }

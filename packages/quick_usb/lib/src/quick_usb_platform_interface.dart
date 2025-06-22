@@ -59,4 +59,6 @@ abstract class QuickUsbPlatform extends PlatformInterface {
       UsbEndpoint endpoint, Uint8List data, int timeout);
 
   Future<void> setAutoDetachKernelDriver(bool enable);
+
+  Future<int> getMaxPacketSize(UsbEndpoint endpoint);
 }

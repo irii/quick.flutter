@@ -70,4 +70,6 @@ class QuickUsb {
 
   static Future<void> setAutoDetachKernelDriver(bool enable) =>
       _platform.setAutoDetachKernelDriver(enable);
+
+  static Future<int> getMaxPacketSize(UsbEndpoint endpoint) => _platform.getMaxPacketSize(endpoint);
 }

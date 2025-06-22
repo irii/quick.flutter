@@ -138,4 +138,9 @@ class QuickUsbAndroid extends QuickUsbPlatform {
 
   @override
   Future<void> setAutoDetachKernelDriver(bool enable) async {}
+
+  @override
+  Future<int> getMaxPacketSize(UsbEndpoint endpoint) {
+    throw UnimplementedError();
+  }
 }
